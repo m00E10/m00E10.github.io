@@ -1,0 +1,723 @@
+==[ Effective Reading ]===========================================|
+The following are my notes on "How to Read a Book" by Mortimer J. Adler.
+Although a very excellent book, it was often very verbose and I would not like
+to re-read it so I synthesized the main ideas in my own words. If you just want
+the main ideas of "How to read a book" ctrl+f for the section titled
+"Book Reading Method".
+
+For anyone that would like to better their ability to learn I highly recommend
+reading the book in full! Reading is our primary source of learning and being
+able to get more out of the time spent reading is a valuable investment, but if
+you don't have the time right now I hope my notes can serve as a decent kind of 
+'spark notes' and that they may help you become a better reader.
+
+Be aware, I did not take any notes on Synoptical reading. In addition, my notes
+on how to read particular types of books are limited, as I only took notes on
+"Practical Books" and "Philosophy" but the general method of 'How to Read a
+Book' applies well without modification to any book you may wish to gain
+understanding from.
+
+-- Table of Contents ---------------------------------------------|
+Line 032: The Dimensions of Reading
+Line 052: The Levels of Reading
+Line 095: Speed Reading
+Line 123: Active Reading
+Line 149: Analytical Reading
+Line 371: Aids to Reading
+Line 411: Reading Practical Books
+Line 447: Reading Philosophy
+Line 508: Book Reading Method
+Line 555: Suggested Reading List by the Author
+
+-- The Dimensions of Reading -------------------------------------|
+Reading is not just an activity but it is an art. Like all activities, it is an
+active pursuit. The more active you are about your reading the more
+understanding you can gain from the text. Not all reading is done for
+understanding, much reading is often done just for information, and there is
+nothing wrong with reading for information! But if you seek to truly understand
+a topic, then you must read with the goal of understanding.
+
+You read for information when you read newspapers, or pamphlets. You read for
+understanding when you read about complex ideas such as the sciences or
+humanities. The only way to further your understanding is to first find a text
+that you dont understand! Then through deliberate and active reading
+understanding may be achieved, allowing you to grow as a reader and as an
+individual.
+
+To be informed is to know simply that something is the case, but to be
+enlightened is to know, in addition, what it's all about. Why it's the case,
+what its connections are with other facts, in what respects it's the same, in
+what respects it's different, and so forth.
+
+-- The Levels of Reading -----------------------------------------|
+1. Elementary Reading - Quite simply, the elementary basic level of reading.
+   Reading words on a page.
+
+2. Inspectional Reading - Surface level reading, what is the text about?
+   The value of inspectional reading shouldn't be understated, readers who skip
+   the table of contents skip this part, and make their reading more difficult
+   as they try to both understand, and piece together knowledge of the text.
+   Inspectional reading is made up of two parts, pre-reading, and superficial
+   reading.
+
+    Pre-reading: Skimming through the contents of the text to determine if it is
+    worthy of a full analytical reading. Think of yourself as a detective
+    looking for clues to a texts main themes and ideas.
+     > The TOC: A roadmap of the actual roadtrip you may choose to go on with
+       the book.
+     > The Preface: What is the book about? The authors goals?
+     > The Index: What range of topics are covered? How are they detailed?
+     > The Publishers Blurb: How is it presented to potential readers?
+     > The Chapters: Not all, the ones that seem important. Read their openings.
+     > The Book: Skim the rest of the book, read the ending pages too as
+       the author often summarizes key points.
+
+    Superficial Reading: When reading a difficult text, one can struggle to
+    continue reading if they try to seek understanding *while* they are reading
+    it. Like how you often dont "get" everything a movie presents on the first
+    watch, so too is often with books. Dont hesitate to give the first read of a
+    difficult text a superficial, but focused read. Dont let the footnotes or
+    references distract- READ! On subsequent reads you will know in which areas
+    you need to pay more attention to and even if you dont read it a second
+    time, its better a full and superficial reading, then a depthful but
+    unfinished one.
+
+3. Analytical Reading - "Some books are to be tasted, some swallowed, and some
+   few to be chewed and digested." Analytical reading is chewing and digesting
+   the text. It is the best and most complete reading that is possible with
+   unlimited time. This is not necessary for information or entertainment, this
+   level of reading is reserved for understanding.
+
+4. Syntopical Reading - Reading not just one text, but many texts, and comparing
+   them amongst eachother to gain a deeper understanding of not just the texts
+   contents, but of the subject itself.
+
+-- Speed Reading -------------------------------------------------|
+It is definitely beneficial to be able to read texts thoroughly and quickly. But
+time does *need* to be spent on words. The skill of 'speed reading' is in
+practice more about the skill in *variable* speed reading. Knowing different
+paces of reading, having different gears, and knowing which gear you should be
+in for which texts and kinds of reading. When reading inspectionally and
+skimming, you can read as fast as you are able to get the words. But just
+because you *can* read fast does not mean you *should*. Difficult texts, or
+really anything that you are trying to understand should not be sped through.
+Keep your reading goals ever present and read according to them, adjusting your
+speed as necessary.
+
+-- Increasing your reading speed --
+What slows our reading down the most is our eyes, how they like to re-read, and
+point at chunks of the line chunk by chunk, rather than a steady glide across
+the line. Dont allow your comprehension to decrease for your reading speed to
+increase, the faster one moves the less of the world you notice. Every book
+should be read no slower than it deserves, and no faster than you can
+comprehend.
+
+But, if you do want to read as fastly as you can, for whatever reason, here are
+some techniques that may help in that:
+
+> Follow your index finger. Start at a pace faster than comfortable, you will be
+  able to quickly match that speed. Continue this practice like how a sprinter
+  trains to run faster. This practice also improves your concentration, it makes
+  the reading more active and it becomes less likely for the mind to wander.
+
+-- Active Reading ------------------------------------------------|
+Active reading is when you are completely focused on the text at hand, and are
+trying with a conscious effort to *understand* it. While you are reading you
+should be asking yourself certain questions and trying to answer them. You
+should be ever present and be *demanding* understanding from the text. Thou
+that asks questions receives answers.
+
+ The four fundamental questions:
+    > What is the text about? - Discover the leading theme of the text, and how
+      the theme is subdivided and developed.
+    > What is being said in detail, and how? - Discover the main ideas,
+      assertions, and arguments.
+    > Is the text true? - The first two questions must be answered before this
+      can be, and the reading of the text must also be completed in entirety.
+    > What of it? - How is the texts information significant to you? Has it
+      enlightened you? If so, you should seek further enlightenment by asking
+      what else follows and what else is implied or suggested.
+
+While you are reading you should keep these questions in your mind and
+continuously make attempts to answer them, building better and better answers to
+the questions as you move through the text. You also should take notes while
+reading. Not just to synthesize the information contained within, but to note
+your own thoughts on the matter: your reactions, your questions, and your
+answers to the four fundamental questions. After finishing the text, outline the
+points of it. This forces you to evaluate your understanding.
+
+-- Analytical Reading --------------------------------------------|
+As you recall, this is the third level of reading. Reading with the goal of
+complete understanding of a text. There are many methods that must be employed
+to reach this level of reading.
+
+-- Stage 1: Rules for finding what a book is about --
+The first stage of analytical reading is overview reading. Getting to know what
+the text is *about*. What problems it tries to answer, and how it goes about
+trying to answer those problems.
+The following rules, or steps, compose the first stage of analytical reading
+
+ 1. Classify the book according to type and subject matter.
+ 2. State the unity of the text within a short paragraph, what its about and how
+    it goes about delivering that information.
+ 3. Outline the book, its parts, and those parts relation to the whole. In doing
+    so, state the major parts/themes of the text, how they are organized, and
+    how those parts make up the text to deliver its message.
+ 4. Define the problem(s) the author is trying to solve. Attempt to determine
+    what the author was trying to do- their intent with writing the text.
+
+
+:: Rule 1. Classifying Books ::
+You must know what kind of text you are reading, and you should know this as
+early as possible, preferably before you have even begun reading. Knowing what
+the text is *about* frames the rest of the content, and will help you answer
+questions about the text and more quickly gain understanding.
+
+Principles of Classification:
+
+ Expository: Books that teach knowledge
+  Theoretical: Books that may contain information that *can* be used to solve
+               problems, but not ones that specify what the problems are. Books
+               of the sciences are theoretical.
+   History    : Rather easy to identify, a historical account.
+   Philosophy : If the text emphasizes things that lie within your daily
+                experience, it is a philosphical text.
+   Science    : Also easy to identify, texts that deal with how the world works.
+  Practical  : Books that contain information on how to solve problems, like 
+               how-to guides, manuals, or guidebooks.
+   Instructive: Manuals, how-to guides. 
+   Informative: Information of ethical or political problems. These are
+                practical problems as they deal with how people interact with
+                eachother.
+  Fiction    : Very easy to identify; make believe, novels, stories, fantasy.
+
+Dont expect all texts to stay isolated to one category. As an example, James
+Principles of Psychology is a scientific and philosophical work in the area of
+psychology.
+
+You can quite effectively classify a text by determining if its a practical or
+theoretical text, what the subject matter is, and how the author deals with the
+subject. These things can be determined through an inspectional reading; the
+title, subtitle, table of contents, introduction, publisher blurbs, etc.
+
+ Ex: Lockes Essay Concerning Human Understanding is a philosophical work in
+     psychology
+
+
+:: Rule 2. Stating Unity ::
+Give the text an inspectional reading and then attempt to accurately state what
+the text is about within a short paragraph.
+
+ As an example, the unity of Aristotle's ethics can be stated as:
+
+  This is the inquiry into the nature of human happiness and an analysis of the
+  conditions under which happiness may be gained or lost, with an indication of
+  what men must do in their conduct and thinking in order to become happy or to
+  avoid unhappines, the principal emphasis being placed on the cultivation of
+  the virtues, both moral and intellectual, although other goods are also
+  recognized as necessary for happiness, such as wealth, health, friends, and a
+  just society in which to live.
+
+
+:: Rule 3. Outlining The Text ::
+Its important to create a proper outline of what the book is about. Identify
+what sections of the text talk about what, and how they all relate to eachother
+and compose a greater theme. State the unity of the text.
+
+After your initial inspectional reading you should be able to have a rough
+outline of the text within your mind.
+
+:: Rule 4. Determine The Authors Intent ::
+You should be able to determine the main question, or questions, that the author
+attempts to answer in the text. You should be able to also state the subordinate
+questions if the main question is complex and has many parts. You should be able
+to put these questions in an intelligble order; which are primary, secondary,
+and which need to be answered before others can be answered.
+
+-- Stage 2: Rules for Interperative Reading ::
+The second stage of analytical reading is done to answer the following question:
+What is being said in detail, and how? Applying the following rules clearly
+helps you answer this question. When you have come to terms with the author,
+identified his problems, arguments, and solutions you will know what the authors
+message is. The following rules compose the second stage of analytical reading:
+
+ 5. Come to terms with the author by identifying and interpreting the key words
+ 6. Grasp the authors leading propositions/assertitions by identifying and
+    (dealing with/meditating on) the important sentences.
+ 7. Identify and understand the authors arguments by finding them in, or
+    constructing them out of, sequences of sentences.
+ 8. Determine what problems the author has solved, and which he has not. For the 
+    latter, determine which the author knew he had failed to solve
+
+:: Rule 5. Finding the Important Words ::
+To properly come to terms with an author you must understand his vocabularly,
+the key words that the author uses to convey his message. If you see a word that
+you dont recognize, or are unsure of how it is being used. DO NOT just continue
+reading all will-nilly. If you misunderstand, or fail to understand, a word in
+the authors text, you risk the failure of understanding the entirety of the
+text.
+
+So try to identify the words that you suspect are more important than most, and
+try to be sure of how their useage develops the authors overall idea that they
+are trying to convey to you.
+
+Ex: "Cause" can vary, cause and effect? Mans duty and cause? 
+
+:: Rule 6. Finding the Important Sentences ::
+Just as it is important to find the key words in a sentence, it is just as
+important to find the key sentences in the paragraph. Depending on the
+context, the location of the sentence and by what other sentences it is
+surrounded by, the meaning of a singular sentence can vary wildly. A lot can be
+said with just one sentence, there can be many propositions contained with a
+singular sentence. Just as well, however, it can take many sentences to bring
+forward one proposition. It is your duty as a reader to follow the context, how
+each word makes up each sentence, and how each sentence makes up each paragraph,
+page, chapter, section, etc. To demonstrate a full understanding of a text you
+must understand it at each level. 
+
+:: Rule 7. Finding the Important Arguments ::
+Arguments of course are made up of sentences. Identifying the important
+arguments first begins with identifying the important sentences. An argument
+begins somewhere, goes somewhere, and gets somewhere. It is a movement of
+thought.
+
+Some arguments are made with an unbroken series of sentences. Other arguments
+are composed of many paragraphs, with the important sentences sprinkled amongst
+them. In the latter case, it is your duty as a reader to piece together the
+argument that is scattered.
+
+:: Rule 8. Determine the Authors Solutions ::
+After you have determined the authors main arguments, points, and ideas you can
+compile them as solutions to the problems you identified in Rule 4. In doing so
+you synthesize the points the author has made into their most important
+existence; the answers and the solutions. This demonstrates a full and effective
+understanding. This doesnt mean the are the RIGHT answers, but that they are the
+answers the author is proposing.
+
+:: Test Your Understanding ::
+One of the best ways to test your understanding is to restate what the author is
+trying to convey in your own words. If you are restating the authors words with
+little variation, then the only thing that has been communicated to you is that,
+words. To be able to restate a message in your own words shows that you
+understand the authors *message*.
+
+Another way of demonstrating understanding is to make the message relevant to
+you. How can you apply the information to your own experience, history, and
+life? Ideas do not exist in isolation. They originate from, and refer to, the
+world that we live in. To demonstrate how those ideas relate to your world
+demonstrates understanding.
+
+-- Stage 3: Criticizing the Text --
+The last stage of analytical reading is judging a book. If you have succesfully
+understood the text, then the author has elevated you to his level, and you can
+act like their peer and engage in conversation, praise, and critiques. In fact,
+it is your duty, if the text has been worthy of your time so far the worst crime
+of all would be to put it back on its shelf and forget about it. No, instead go
+forth and criticize it fairly, justly, and fully. Engage with the author. The
+following rules compose the third stage of analytical reading:
+
+ 9.  You must be able to say with reasonable certainty, "I understand", before
+     you can say that you agree or disagree.
+ 10. When you disagree, do so reasonably, and not disputatiously or
+     contentiously. Disagreements are generally remediable.
+ 11. Respect the difference between knowledge and mere personal opinion. Give
+     reasons for any critical judgement you make, or view you hold. 
+
+:: Rule 9. Claiming Understanding ::
+Before you can criticize a book fairly you must first be able to confidently say
+"I understand". You must have taken great care to adhere to the first two stages
+of analytical reading and truly know what the text is about. Be weary of
+claiming understanding of a text if its meaning is dependent upon other works of
+the same author, as an example, critiquing Kants Critque of Pure Reason without
+reading his Critique of Practical Reason is an injustice.
+
+:: Rule 10. Disagreeing with an Author ::
+Any disagreements you have with an author must be done reasonably and be done in
+the pursuit of truth, not in the pursuit of 'being right' or in winning an
+argument. You should be as prepared to agree as you are to disagree. Whichever
+one does should only be motivated by one consideration, the facts. Disagreement
+as well is a two way street. When disagreement arises you should be just as
+prepared to teach as you are to learn.
+
+Conditions of engaging in rational disagreement:
+ 1. Be aware of your own emotions, and how your words may invoke emotions in the
+    other party. Do not give vent to feelings. Stay level headed and rational.
+ 2. Make your own assumptions, prejudices, and prejudgements explicit. If you
+    cannot admit your own assumptions then you will be unable to admit that the
+    other party has their own assumptions as well.
+ 3. Be impartial. Avoid partisanship. Ones pursuit should be in truth, not in
+    being right. Be sympathetic to the other perspective.
+
+:: Rule 11. Reason vs Opinion ::
+If an author does not give reasons for his propositions, then they can only be
+treated as matters of opinion. So too, when you are criticizing an author, any
+judgement you make or view you hold must be backed up by reason, it must be
+explained, otherwise it is just shallow opinion.
+
+The four ways a text can be criticized are as follows:
+ 1. You are uninformed. You lack key knowledge.
+ 2. You are misinformed. Your assertions are untrue.
+ 3. You are illogical. You have commited a fallacy in your reasoning.
+ 4. Your analysis is incomplete. You have not solved all the stated problems /
+    did not see all their implications / have failed to make distinctians that
+    are relevant to the authors undertaking.
+
+If you have not made any of the first three criticisms, then you agree with the
+author. To say "I find nothing wrong with your premises, and no errors in your
+reasoning, but I do not agree with your conclusions." then that only means you
+dislike the conclusion. If you understand, and you have no founded criticisms,
+you must agree with the author.
+
+-- Aids to Reading -----------------------------------------------|
+It is important to perform a full and just intrinsic reading before reaching for
+external aids to gain understanding. Perform a full active reading of the text,
+cast your own judgement, and then allow yourself to indulge in commentaries,
+abstracts, and reference books. Of course, ones reading cannot be entirely
+intrinsic, during our analytical reading our understanding of the book is based
+upon our own life experience, and previous books we have read. Nevertheless, the
+four extrinsic reading aids faill into four categories:
+
+ 1. Relevant experience
+ 2. Other books
+ 3. Commentaries and abstracts
+ 4. Reference Books
+
+:: Relevant Experience ::
+Relevant experience is possible with common or specialized experience.
+Concerning the work of fiction and philosophy, all that is required is common
+experience. Concerining the sciences, specialized experience and knowledge is
+required. Concerning history, both is required.
+
+:: Other Books ::
+With many texts of philosophy and science the work is built upon earlier works.
+As an example, one cannot get a proper understanding of the Federalist Papers
+without having first read the Articles of Confederation and the Constitution.
+Authors are influencd by other authors, to truly understand an authors work you
+may wish to read some works that were influential to that author.
+
+:: Commentaries and Abstracts ::
+Commentaries and abstracts should be used sparingly. Too often commentators are
+wrong in their commentary, just look at Anthony Fantano. Reading a commentary
+too easily leads to a limited understanding of the book. Only use these as a
+second opinion on the matter, do not let anyone but yourself make up your mind
+about the book. If you read the book first and develop your own judgement, you
+are on equal terms of the author of any commentaries. If however you read a
+commentary before reading the book, you, and your understanding, are at the
+commentators mercy.
+
+:: Reference Books ::
+MAN WE GOT THE INTERNET NOW.
+
+-- Reading Practical Books ---------------------------------------|
+Practical books may contain the information of how to solve a problem, but the
+onus is on you to solve it. Yes, more information can help you make better
+decisions, but you MUST act. Reading a book on how to be a better
+conversationalist will not make you any better at conversation until you begin
+applying the concepts described, until you start practicing, until you act.
+
+There are two distinct kinds of practical books
+ 1. Ones that are primarily a presentation of rules
+ 2. Ones that read theoretically, but attack practical problems, like philosophy
+
+When reading a practical book, the personality of the author is important. In
+contrast to a book of the sciences, you dont need to care at all for the
+personality the author of a mathematical treatise has, but for practical books,
+reading in a way that you wish to apply what the author has to say in your own
+life, you and the authors personalities must be somewhat compatible.
+
+Follow the steps of analytical reading as you usually would do, but the
+following rules are changed to be better suited for practical books:
+ 4. Find out what the author wants you to do
+ 8. Find out how the author proposes that you do these things
+
+When reading a practical book there are two major questions you should ask:
+ 1. What are the authors objectives?
+ 2. What means for achieving them does the author provide?
+
+You will notice they are very similar to our standard: What are the problems /
+solutions.
+
+Also, the following questions are changed to better suit practical books:
+ 3. Is what the author wants you to seek right? If so, what is the
+    best way of seeking it.
+ 4. If you agree with the author of a practical book, then you must
+    apply what has been said in your own life. You must take action. Any failure
+    to do so is not of laziness, but in not truly agreeing with the author.
+
+-- Reading Philosophy --------------------------------------------|
+Humans are naturally born inquisitive. Through life and the interaction with
+other people, and the nonanswers received is it beaten out of us, reduced to
+only ask for information. Curiosity persists, but in a deteriorated state. The
+ability to ask the same sort of profund questions that a child asks, with the
+mature understanding of what it means to retain it, is extremely rare. We do not
+have to think as children in order to philosphize, but we do need to be able to
+see as they do, wonder as they do, and ask as they do.
+
+Adults let the world of man burden their pursuit of truth. Great philosophers
+are able to think without these burdens effecting their questioning or
+reasoning. They are able to make simple distiction on complex ideas. They are
+able to be childishly simple in their questioning, but simultaneously maturely
+wise and in the replies.
+
+:: The Questions Philosophers Ask ::
+The best way to explain what kinds of questions philosophers ask is with some
+examples:
+
+ Does everything that exists exist physically, or are there some things that
+ exist apart from material embodiment? Do all things change, or is there anything
+ that is immutable? Does anything exist necessarily, or must we say that
+ everything that does exist might not have existed? Is the realm of possible
+ existence larger than the realm of what actually does exist? 
+
+The above questions are metaphysical questions. There are other types of
+questions as well:
+
+ Metaphysical: Questions about being and existence
+ Nature      : Questions about the natural world, its components and
+               interactions with eachother.
+ Epistemology: Questions about knowledge, the causes, limits, and extants of
+               human knowledge.
+ Normative   : Questions of ethics, leading the good life, and having a just
+               society.
+
+:: The Philosophical Method ::
+ 1. The doubt: Put in to doubt everything that is possible to doubt. Suspect  
+    things or beliefs that are taken for granted. Ask "Why?"
+ 2. The question: The forumulation of the philosophical question must be
+    pondered as well. A clear and precise question leads to the root of the
+    problem, it should clearly expose what is unknown.
+ 3. The answer: In trying to answer a philosophical question you should ask and
+    attempt to answer many other secondary questions, perform deductive
+    reasoning and ponder at length to arrive at your final answer. Your answer
+    must be clear and well founded.
+ 4. The justification: Your answer must be justified and supported. Arguments
+    should be presented in forms of premises that are logically connected.
+
+Each different school of philosophy has its own perspective and way of thinking
+about philosophical questions. By reading the works of other philosophers from
+various schools of philosophy, you will become more acquainted with the
+philosophical method and be able to better philosophize yourself.
+
+:: Tips for Reading Philosophy ::
+When reading books on philosophy an adhereance to Analytical reading is best
+suited. No rules need to be altered.
+
+Identify the questions -> Identify the authors controlling principles and
+perspective -> Perform the rest of analytical reading -> Make judgement
+
+-- Book Reading Method -------------------------------------------|
+:: The Steps of Inspectional Reading ::
+ I. Prereading
+ 1.  Read through the Table of Contents: It serves as a roadmap for the roadtrip
+     you may go on with the book.
+ 2.  Read the Preface: What is the book about? What are the authors goals, what
+     will he be trying to communicate to the reader?
+ 3.  Read the Index: What range of topics are covered? How are they detailed?
+ 4.  Read the Publishers Blurb: How is the book presented to potential readers?
+ 5.  Read some Chapters: Not all, but the ones that seem important. Read their
+     openings.
+ 6.  Skim the Book: Give the book a cursory reading, read chapters ending pages
+     too as the author often summarizes key points.
+II. Superficial Reading
+ 7. If a book is too difficult to gain understanding and to follow along with
+    the author as you read, then give it a superficial reading instead. If you
+    are finding yourself frequently rereading sentences and paragraphs, battling
+    with the author trying to understand them, postpone your analytical read,
+    and instead read the text superficially (but fully) and without backtracking
+    or reference/footnote hunting.
+:: The Steps of Analytical Reading ::
+  I. Determine what the book is about. Read Inspectionally
+  1.  Classify the book according to kind and subject matter.
+  2.  State what the book is about within a paragraph.
+  3.  Enumerate its major parts, their order, and their relation. Outline these
+      parts.
+  4.  Define the problem(s) the author is trying to solve with the book.
+ II. Interpret the books contents. Read Analytically.
+  5.  Come to terms with the author by identifying and interpreting the key 
+      words.
+  6.  Grasp the authors main propositions by dealing with the most important
+      sentences.
+  7.  Know the authors arguments, by finding them in, or constructing them out 
+      of, sequences of sentences.
+  8.  Determine which problems the author has solved, and which they have not.
+      Determine if the author acknowledges any unsolved problems.
+III. Criticizing a book fairly. Meditate on the book.
+  9.  Do not criticize until you can confidently say you understand the authors
+      message(s).
+ 10.  If you disagree with the messages, do so reasonably and for the pursuit of
+      truth, not for being right or for being a contrarian. 
+ 11.  Any judgements or critiques you make must be fully reasoned and explained,
+      otherwise it is just opinion.
+ 12.  If you can not show that author is uninformed, misinformed, or that they
+      have committed a logical fallacy, then you agree with the author, or, in
+      the case of an incomplete analysis, you suspend judgement.
+
+-- Suggested Reading List ----------------------------------------|
+Homer – Iliad, Odyssey
+The Old Testament
+Aeschylus – Tragedies
+Sophocles – Tragedies
+Herodotus – Histories
+Euripides – Tragedies
+Thucydides – History of the Peloponnesian War
+Hippocrates – Medical Writings
+Aristophanes – Comedies
+Plato – Dialogues
+Aristotle – Works
+Epicurus – Letter to Herodotus; Letter to Menoecus
+Euclid – Elements
+Archimedes – Works
+Apollonius of Perga – Conic Sections
+Cicero – Works
+Lucretius – On the Nature of Things
+Virgil – Works
+Horace – Works
+Livy – History of Rome
+Ovid – Works
+Plutarch – Parallel Lives; Moralia
+Tacitus – Histories; Annals; Agricola; Germania
+Nicomachus of Gerasa – Introduction to Arithmetic
+Epictetus – Discourses; Encheiridion
+Ptolemy – Almagest
+Lucian – Works
+Marcus Aurelius – Meditations
+Galen – On the Natural Faculties
+The New Testament
+Plotinus – The Enneads
+St. Augustine – On the Teacher; Confessions; City of God; On Christian Doctrine
+The Song of Roland
+The Nibelungenlied
+The Saga of Burnt Njál
+St. Thomas Aquinas – Summa Theologica
+Dante Alighieri – The Divine Comedy;The New Life; On Monarchy
+Geoffrey Chaucer – Troilus and Criseyde; The Canterbury Tales
+Leonardo da Vinci – Notebooks
+Niccolò Machiavelli – The Prince; Discourses on the First Ten Books of Livy
+Desiderius Erasmus – The Praise of Folly
+Nicolaus Copernicus – On the Revolutions of the Heavenly Spheres
+Thomas More – Utopia
+Martin Luther – Table Talk; Three Treatises
+François Rabelais – Gargantua and Pantagruel
+John Calvin – Institutes of the Christian Religion
+Michel de Montaigne – Essays
+William Gilbert – On the Loadstone and Magnetic Bodies
+Miguel de Cervantes – Don Quixote
+Edmund Spenser – Prothalamion; The Faerie Queene
+Francis Bacon – Essays; Advancement of Learning; Novum Organum, New Atlantis
+William Shakespeare – Poetry and Plays
+Galileo Galilei – Starry Messenger; Dialogues Concerning Two New Sciences
+Johannes Kepler – Epitome of Copernican Astronomy; Concerning the Harmonies of
+                  the World
+William Harvey – On the Motion of the Heart and Blood in Animals; On the
+                 Circulation of the Blood; On the Generation of Animals
+Thomas Hobbes – Leviathan
+René Descartes – Rules for the Direction of the Mind; Discourse on the Method;
+                 Geometry; Meditations on First Philosophy
+John Milton – Works
+Molière – Comedies
+Blaise Pascal – The Provincial Letters; Pensees; Scientific Treatises
+Christiaan Huygens – Treatise on Light
+Benedict de Spinoza – Ethics
+John Locke – Letter Concerning Toleration; Of Civil Government; Essay Concerning
+             Human Understanding; Thoughts Concerning Education
+Jean Baptiste Racine – Tragedies
+Isaac Newton – Mathematical Principles of Natural Philosophy; Optics
+Gottfried Wilhelm Leibniz – Discourse on Metaphysics; New Essays Concerning
+                            Human Understanding; Monadology
+Daniel Defoe – Robinson Crusoe
+Jonathan Swift – A Tale of a Tub; Journal to Stella; Gulliver's Travels; A
+                 Modest Proposal
+William Congreve – The Way of the World
+George Berkeley – Principles of Human Knowledge
+Alexander Pope – Essay on Criticism; Rape of the Lock; Essay on Man
+Charles de Secondat, baron de Montesquieu – Persian Letters; Spirit of Laws
+Voltaire – Letters on the English; Candide; Philosophical Dictionary
+Henry Fielding – Joseph Andrews; Tom Jones
+Samuel Johnson – The Vanity of Human Wishes; Dictionary; Rasselas; The Lives of
+                 the Poets
+David Hume – Treatise on Human Nature; Essays Moral and Political; An Enquiry
+             Concerning Human Understanding
+Jean-Jacques Rousseau – On the Origin of Inequality; On the Political Economy;
+                        Emile – or, On Education, The Social Contract
+Laurence Sterne – Tristram Shandy; A Sentimental Journey through France and
+                  Italy
+Adam Smith – The Theory of Moral Sentiments; The Wealth of Nations
+Immanuel Kant – Critique of Pure Reason; Fundamental Principles of the
+                Metaphysics of Morals; Critique of Practical Reason; The Science
+                of Right; Critique of Judgment; Perpetual Peace
+Edward Gibbon – The Decline and Fall of the Roman Empire; Autobiography
+James Boswell – Journal; Life of Samuel Johnson, Ll.D.
+Antoine Laurent Lavoisier – Traité Élémentaire de Chimie (Elements of Chemistry)
+Alexander Hamilton, John Jay, and James Madison – Federalist Papers
+Jeremy Bentham – Introduction to the Principles of Morals and Legislation;
+                 Theory of Fictions
+Johann Wolfgang von Goethe – Faust; Poetry and Truth
+Jean Baptiste Joseph Fourier – Analytical Theory of Heat
+Georg Wilhelm Friedrich Hegel – Phenomenology of Spirit; Philosophy of Right;
+                                Lectures on the Philosophy of History
+William Wordsworth – Poems
+Samuel Taylor Coleridge – Poems; Biographia Literaria
+Jane Austen – Pride and Prejudice; Emma
+Carl von Clausewitz – On War
+Stendhal – The Red and the Black; The Charterhouse of Parma; On Love
+Lord Byron – Don Juan
+Arthur Schopenhauer – Studies in Pessimism
+Michael Faraday – Chemical History of a Candle; Experimental Researches in
+                  Electricity
+Charles Lyell – Principles of Geology
+Auguste Comte – The Positive Philosophy
+Honoré de Balzac – Père Goriot; Eugenie Grandet
+Ralph Waldo Emerson – Representative Men; Essays; Journal
+Nathaniel Hawthorne – The Scarlet Letter
+Alexis de Tocqueville – Democracy in America
+John Stuart Mill – A System of Logic; On Liberty; Representative Government;
+                   Utilitarianism; The Subjection of Women; Autobiography
+Charles Darwin – The Origin of Species; The Descent of Man; Autobiography
+Charles Dickens – Pickwick Papers; David Copperfield; Hard Times
+Claude Bernard – Introduction to the Study of Experimental Medicine
+Henry David Thoreau – Civil Disobedience; Walden
+Karl Marx – Capital; Communist Manifesto
+George Eliot – Adam Bede; Middlemarch
+Herman Melville – Moby-Dick; Billy Budd
+Fyodor Dostoevsky – Crime and Punishment; The Idiot; The Brothers Karamazov
+Gustave Flaubert – Madame Bovary; Three Stories
+Henrik Ibsen – Plays
+Leo Tolstoy – War and Peace; Anna Karenina; What is Art?; Twenty-Three Tales
+Mark Twain – The Adventures of Huckleberry Finn; The Mysterious Stranger
+William James – The Principles of Psychology; The Varieties of Religious
+                Experience; Pragmatism; Essays in Radical Empiricism
+Henry James – The American; The Ambassadors
+Friedrich Wilhelm Nietzsche – Thus Spoke Zarathustra; Beyond Good and Evil; The
+                              Genealogy of Morals; The Will to Power
+Jules Henri Poincaré – Science and Hypothesis; Science and Method
+Sigmund Freud – The Interpretation of Dreams; Introductory Lectures on
+                Psychoanalysis; Civilization and Its Discontents; New
+                Introductory Lectures on Psychoanalysis
+George Bernard Shaw – Plays and Prefaces
+Max Planck – Origin and Development of the Quantum Theory; Where Is Science
+             Going?; Scientific Autobiography
+Henri Bergson – Time and Free Will; Matter and Memory; Creative Evolution; The
+                Two Sources of Morality and Religion
+John Dewey – How We Think; Democracy and Education; Experience and Nature;
+             Logic: the Theory of Inquiry
+Alfred North Whitehead – An Introduction to Mathematics; Science and the Modern
+                         World; The Aims of Education and Other Essays;
+                         Adventures of Ideas
+George Santayana – The Life of Reason; Skepticism and Animal Faith; Persons and
+                   Places
+Vladimir Lenin – The State and Revolution
+Marcel Proust – Remembrance of Things Past
+Bertrand Russell – The Problems of Philosophy; The Analysis of Mind; An Inquiry
+                   into Meaning and Truth; Human Knowledge, Its Scope and Limits
+Thomas Mann – The Magic Mountain; Joseph and His Brothers
+Albert Einstein – The Meaning of Relativity; On the Method of Theoretical
+                  Physics; The Evolution of Physics
+James Joyce – 'The Dead' in Dubliners; A Portrait of the Artist as a Young Man;
+               Ulysses
+Jacques Maritain – Art and Scholasticism; The Degrees of Knowledge; The Rights
+                   of Man and Natural Law; True Humanism
+Franz Kafka – The Trial; The Castle
+Arnold J. Toynbee – A Study of History; Civilization on Trial
+Jean-Paul Sartre – Nausea; No Exit; Being and Nothingness
+Aleksandr Solzhenitsyn – The First Circle; The Cancer Ward
+

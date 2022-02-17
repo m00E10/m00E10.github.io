@@ -1,0 +1,37 @@
+@font-face {font-family: "HP 150 re";src: url('Web437_HP_150_re.woff');src: url('Web437_HP_150_re.woff'); format('woff')}
+:root{
+--bg:#000000;--fg:#a8a8a8;--bg_acc:#e0e0e0;
+--bg_shadow:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAEElEQVQImWNYvXr1fwZkAAAuFAMBN01LeQAAAABJRU5ErkJggg==);
+--font_sans:"HP 150 re","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+--font_mono:"HP 150 re",Fira Code,Monaco,Consolas,Ubuntu Mono,monospace;}
+header{margin:0 auto;display:flex;}
+body{font-family: var(--font_sans);max-width: 80vw;padding: 0 1.3vw;margin: 0.8vw auto;line-height:1.5;color:var(--fg);background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAEElEQVQImWMQFxf/z0AQAAAs/QFFPmwlUAAAAABJRU5ErkJggg==);background-color:var(--bg);}
+.index{max-width: 56.5vw;padding:0em clamp(0vw, 10%, 1vw);}
+h1 {font-size:2vw;margin-left:-0.2vw;}
+h1 span{ font-size: 1rem; font-style:italic;font-weight: normal; display:block; letter-spacing:0;}
+pre{font-family: var(--font_sans);}
+p{font-size:1.5vw;}
+a{font-size:1.4vw; color:#75a8a8;text-decoration:none;font-style:normal;}
+main{border:0.05vw solid #545454;margin:3vw auto;background-color:var(--bg);}
+header div {max-height:20vw; display:flex; flex:1;  align-items:flex-end; background:var(--fg); color:var(--bg);}
+header a:hover{color:#75a8a8;}
+header nav {padding: 2 0;margin-bottom:0.15vw;padding-left:0.4vw;font:1vw var(--font_mono);} 
+article,main nav{padding:1em clamp(1.5vw, 7.37%, 4vw);}
+article a:hover{color:#a85400;}
+hr{border-style:none none dotted;margin:0vw;}
+code{overflow:auto;background:var(--bg_acc);padding:0.5vw}
+code{padding:0.1vw}
+blockquote{font-style:italic;line-height:1.2;padding-left:1em;border-left:0.2vw solid var(--fg);}
+figure{margin:0;}
+figcaption{margin-bottom:3vw;}
+img{max-width: 100%;}
+.shadow{position: relative;}
+.shadow:after{background:var(--bg_shadow);background-position:right bottom;background-repeat:repeat;height:100%;width:100%;content:"";position:absolute;left:0.7vw;top:0.7vw;z-index:-1;}
+.left{float: left;}.right{float: right;}
+@media (min-width: 30vw) {article p {text-align: justify; text-justify: inter-word;}}
+.navbar {width: 100%;background-color:var(--bg);overflow:auto;}
+.navbar a {
+	float: left;
+	padding: 1vw;color:var(--fg);font-size: 1.5vw;width:25%;text-align: center;}
+.navbar a:hover {background:color: #a85400;}
+.navbar a.active {color: #a85400;}

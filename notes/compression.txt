@@ -1,0 +1,625 @@
+==[ Learning Goals + Questions ]==================================|
+ :: Goals ::
+  > How to bit pack by hand to reduce file size but be revertible a-zA-Zaz0-9
+  > Perform bit-packing in Golang
+  > Implement a compression $algorithm in Golang
+  > Make a big suite of games small. Make a beautiful repack.
+  > Know, mathematically, how each algorithm used in said repack works.
+
+ :: Questions ::
+  > What is the significance of the dictionary size? Assumption: Larger
+    dictionary size allows for more repetition in each 'chunk' that is reduced.
+    Larger dictionary size = better compression rates
+  > For lossless compression, what makes some algorithms better suited for
+    certain types of data? What are the differences between a flac and a general
+    purpose compression algorithm?
+  > What the heck is the difference between marshalling, serializing, and
+    encoding data.
+
+==[ Table of Contents ]===========================================|
+ |1. |Information_Theory|
+  1.1 |Introduction_1|
+   a. Terms
+   b. Measuring Information
+  1.2 |Predicting_Messages|
+   a. Markov Chains
+ |2. |Encoding|
+  2.1 |Introduction_2|
+   a. Terms
+  2.2 |Types_of_Encoding|
+   a. Morse Code
+   b. ASCII
+   c. Unicode
+   d. UTF-8
+   e. ISO 8859
+   f. MIME
+   g. Base 64
+   h. Base 32
+   i. Bin-Hex
+ |3. |Compression|
+  3.1 |Introduction_3|
+  3.2 |Lossless_Compression|
+   a. Bit-Packing
+   b. Deduplication
+   c. FLAC Compression
+   d. RAR Compression
+   e. lzma Compression
+  3.3 |Lossy_Compression|
+   a. Lossy Techniques
+   b. JPEG Compression
+   c. MP3 Compression
+ |4. |Game_Repacking|
+  4.1 |Introduction_4|
+  4.2 |Preprocessors|
+   a. Precomp
+   b. XTool
+  4.3 |Deduplicators|
+   a. SREP
+  4.4 |Compressors|
+   a. DiskSpan GUI
+   b. FreeArc
+   c. Lolz
+   d. CMIX
+  4.5 |Installers|
+   a. Inno Setup
+   b. ASIS
+   c. WPI
+ |5. |Video_Codecs|
+ |6. |Resources|
+
+==[ *Information_Theory* ]========================================|
+>> *Introduction_1* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
+Okay okay but lets bring it back a little. Back...back....back. We've been
+encoding data long before computers. Morse code? Light signals? Shit, SMOKE
+signals? Messages are data, and we've been communicating messages to each other
+over long distances for thousands of years.
+
+-- Terms ---------------------------------------------------------|
+ > Noise: Ambient noise that we must overcome
+ > Signal: 
+ > Discrete Source: The range of data we wish to encode [ex: 1-9, a-z]
+ > Capacity: The rate of being able to send information and it be consistently
+            distinguished. There is a fundamental limit to how quickly we can
+            squeeze two pulses together and have them be distinguishable. Noise
+            smooths out sent signals over distance! If we send too fast we'll
+            get a plateau!
+ > Symbol: Current state of some observable signal which persists for a fixed
+          amount of time.
+ > Signaling Event: A change from one state to another. (Smoke signals, Morse
+                   code, light code)
+ > Symbol Rate (n): Number of signaling events that can be legibly sent in a
+                   second. (Baud, n)
+ > Difference (S):  How many different symbols we can send. Light signals are on
+                   or off, but even (later) telegraph systems could have
+                   different voltages of transmission, allowing 4 symbols. (S)
+ > Message Space: #Of Differences^#Symbol Rate, Message Space = Sⁿ
+ > Height: The minimum number of questions needed to be asked over the wire to
+          determine the message. (Context of decision trees)
+
+-- Measuring Information -----------------------------------------|
+:: Binary and Yes/No Questions ::
+So we know binary is just yes or nos. So what questions do we ask to determine
+data? How can we ask the least amount of questions to get a final answer?
+
+If we're translating plaintext to binary, we can efficiently ask questions not
+by "Is it A? Is it B?" but by asking "Is it before M?" and recursively halving
+the possibilities with each question until we only have one possible result
+left. For the alphabet, we'll have to ask, at most, 5 yes or no questions know
+what character is trying to be sent over the wire.
+///
+ Message Space = 2ᵖ, where p = # of questions to return desired data-type
+\\\
+We can calculate the amount of questions needed to get an answer based on the
+size of the message space. 
+///
+ Log₂(M) = # of questions
+\\\
+We can quantitatively measure information as the logarithm of the message space.
+/// 
+ H = n log S
+   = log Sⁿ
+\\\
+
+>> *Predicting_Messages* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
+Think: What ways might we be able to predict messages, or the answers to some of
+       our message deducing questions?
+# Through common trends in the type-of data (Ex: English plaintext having
+# certain phrases/words repeated) we can predict future message sequences based
+# on previous message sequences.
+
+Independent and Dependent events can converge on predictable distributions.
+
+-- Markov Chains -------------------------------------------------|
+Markov Property: Given the present, the future is independent of the past. In
+                 other words, the probability of the next event is dependent
+                 only on the current state.
+Stationary Dist: The stabilized distribution of states.
+# Ah, so in the context of plaintext English, we could use the most likely
+# character following a character as the ASSUMED behavior, we can send messages
+# when this is not the case, but by this most-common-assumption we can reduce
+# message count.
+
+ > 0th Order Approximation  (1 State, Random)
+    Independently select possible message (character) at random and form a
+    sequence.
+
+ > 1st Order Approximation, (1 State, Probability)
+    Independently select possible message (character) based on probability and
+    form a sequence.
+
+ > 2nd Order Approximation, (3 states, Dependent)
+    Select possible message PAIRS based on probability and form a sequence
+    Sort possible message pairs into pools based on starting message of the
+    pair. Arbitrarily select a pair, but select the NEXT pair based on the
+    previous pairs ending message. 
+    Ex: AB->BA->AA->AC->CB
+   
+ > 3rd Order Approximation (9 states, Dependent)
+    Expands message pairs to three.
+
+Messages can be binary, letters, words, or any other $message.
+
++++
+ Markov chains are a kind of state machine. As one traverses through this state
+ machine, at each node they have the opportunity to go to another node.
+ Often at these crossroads, one choice is more probabilistically likely than the
+ other.
+
+ These chains can be used to model real life events, like in Morse code, the
+ likelihood of a "." or "-" after a "-". Or in the alphabet, the likelihood of
+ the next letter after an "a".
+
+ In the context of compression, by utilizing known statistical frequency we can
+ reduce the amount of yes/no (1/0) questions we have to ask to determine a
+ message.
++++
+
+ :: Question Count ::
+  Where "P" is probability of the message "m", and "Q" is the average amount
+  of yes/no questions asked to determine a message:
+  ///   
+   Q = Pₘ₁+ Pₘ₂ + ... + Pₘₙ
+  \\\
+
+ :: Entropy ::
+  Where H is the entropy of information, P is the probability of a message, m.
+  ///
+       n
+      ___
+      \
+   H = >Pₘᵢ * log₂(1/Pₘᵢ)
+      /
+      ~~~
+      i=1
+  \\\
+  Entropy is maximum when all outcomes are equally likely. The more predictable
+  an outcome is, the more that entropy is reduced.
+
+==[ *Encoding* ]==================================================|
+>> *Introduction_2* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
+Computers don't like raw human produced data. Humans don't like raw computer
+produced data. So we encode our data so we can pleasantly talk to each other.
+Letters can't be transferred over the wire, whether it's a telegram wire or
+fibre-optic we're sending only two message types. A 1 or a 0. So we must encode
+our human messages into wire transferable and computer understandable 1's and
+0's.
+
+Encoding is the process of assigning a sequence of characters (Ex: "dog") to
+a wire deliverable format, numbers (Ex: 01100100 01101111 01100111).
+
+-- Terms ---------------------------------------------------------|
+  > Character: Minimal unit of text that has a semantic value
+
+  > Character Set: Collection of characters, may be used by multiple languages.
+     (Latin character set is used in English and European languages while the
+      Greek character st is only used by the Greek language)
+
+  > Coded Character Set: Character set, but each character corresponds to a
+     unique number.
+  
+  > Code Unit: Bit sequence used to encode each character of a repertoire within
+     a given encoding form. AKA Code value.
+
+  > Code Point: The allowed encoded value of characters in the character set.
+     Code points are represented by a sequence of code units, the mapping
+     defined by the encoding type. The number of code units required to
+     represent a code point depends on the code
+
+  > Code Space: Range of integers whose values are code points
+
+  > Character Repertoire: The abstract set of >1mil characters from Latin,
+     Cyrillic, Chinese, Korean, Japanese, Hebrew, and Aramaic. The Unicode
+     standard maintains a character repertoire.
+
+>> *Types_of_Encoding* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
+-- Morse Code ----------------------------------------------------|
+Yes! Morse code is a type of encoding! It's not digital sure, but think about
+it. What is encoding? We encode data of one type into another. Here we
+encode English characters into short or long electrical signals.
+
+Also, smoke signals, light signals, ship flag signals, and braille are all
+encoding types.
+
+-- ASCII ---------------------------------------------------------|
+ASCII was the American Standard of encoding text made in the ?? ??.
+A code unit in ASCII consists of 7 bits.
+
+ASCII code units are pretty clever. A, a, and 1 are all least bit 1.
+
+  = 0000000
+...
+1 = 0110001
+2 = 0110010
+3 = 0110011
+...
+A = 1000001
+B = 1000010
+C = 1000011
+...
+a = 1100001
+b = 1100010
+c = 1100011
+...
+
+But once 8 bit computers began to spread, and our character palette expanded,
+many 'local' encoding systems were developed. Norwegian countries used their
+own, Japan used their own (they never used ASCII at all), Russia used their own,
+there was no standard! An Americans computer would not be able to properly
+decode a Japanese users message. But this wasn't too much of a problem
+initially, but once the World-Wide-Web hit, we began to have a problem.
+
+-- Unicode -------------------------------------------------------|
+Unicode is a modern, unified character encoding. It is THE standard. It
+defines 114,697 characters covering 159 scripts, symbols, emojis, and non-visual
+control and formatting codes.
+
+It uses one byte for the first 128 code points (ASCII characters), and 4 bytes
+for all other characters. This means any ASCII text is also UTF-8 text, neat!
+
+Rather than mapping characters directly to bytes, it first defines what
+characters are available, corresponds those available characters to code points
+(natural numbers), determines how those numbers are encoded to code units
+
+There are 17 planes in the Unicode standard, and each plane is a continuous
+group of 65,536 (2^16) code points. The 17 planes can accommodate 1,114,112
+(2^16 x 17) code points. Of these, 2,048 are surrogates used to make pairs in
+UTF-16, 66 are non-characters (34 are ending code points, 2 for each plane, the
+remaining 32 are just blank non-characters for internal use in software),
+137,468 are private-use characters (blank non-characters for any internal use),
+and 947,530 are left for public assignment.
+?? What is an ending code point ??
+ /// Side note:
+  Conflict is possible within private-use characters, as one example; U+F8FF is
+  used by Apple as the Apple Logo, but in the ConScript Unicode Registry U+F8FF
+  is the Klingon Mummification Glyph.
+ \\\
+
+Each plane is further subdivided into Unicode blocks which do not have a fixed
+size. This categorizes character-types further, as an example, in plane 0 blocks
+00-02 cover latin script, 03-05 cover non-latin European scripts, and etc. etc.
+
+ :: Plane 0, Basic Multilingual Plane ::
+  U+0000 - U+FFFF. This plane contains the most commonly used characters. It
+  contains our ASCII :D and despite how many characters Unicode supports, our
+  ASCII text will still be 7 bytes.
+
+ :: Plane 1, Supplementary Multilingual Plane ::
+  U+10000 - U+1FFFF. This plane contains mostly ancient characters, like
+  Egyptian Hieroglyphs, and graphic symbols, like emoticons.
+
+ :: Plane 2, Supplementary Ideographic Plane ::
+  U+20000 - U+2FFFF. Contains mostly East Asian characters that were not able to
+  find their place in Plane 0.
+
+ :: Plane 3, Tertiary Ideographic Plane ::
+
+ :: Plane 4-13, Unassigned ::
+  These planes are all undefined, and will be assigned sometime in the future.
+  These planes allow Unicode to be future proof!
+
+ :: Plane 14, Supplementary Special-Purpose Plane ::
+  U+E0000 - U+EFFFF. Contains non-character code points like control characters
+  that define the language of a text.
+
+ :: Plane 15-16, Supplementary Private Use Area ::
+  These planes are special purpose and will never be specified by Unicode, the
+  code points contained within can be freely assigned by third-parties.
+
+/// Security Issues:
+ There are many homoglyps in Unicode that can be used to substitute characters
+ in URLs for use in phishing, mitigations are difficult due to the huge and
+ constantly changing set of characters.
+
+ Unicode BIDI codes can also be used to make large sections of code do something
+ different from what they appear to do.
+\\\
+
+-- UTF-8 ---------------------------------------------------------|
+A code unit in UTF-8 is 8 bits large. (Hence the 8 in UTF-8). UTF-8 implements
+the Unicode standard, and is the most commonly used implementation, with 98%
+usage on the web and 100% for many languages. The first implementation was made
+in 1992 by Ken Thompson for Plan 9. What a god damn genius.
+
+-- ISO 8859 ------------------------------------------------------|
+Like UTF-8, it is also an 8-bit single byte-coded graphic character set, its
+first edition was published in 1987. With 256 code points, it acts as the Latin
+Alphabet character set for English and European languages. Outside of those
+languages it's lacking though, it can't represent languages with more than 128
+symbols, and it cant display multiple families of symbols at the same time.
+
+-- MIME ----------------------------------------------------------|
+MIME provides the Base 64 scheme. # Delete me later, but this is where you were
+                                  # last. Continue here!
+MIME defines a set of methods for representing binary data in formats OTHER than
+ASCII text format. This is done via the content-transfer-encoding MIME header
+field.
+
+Conforming message header field values use ASCII characters, non-ASCII values
+use the MIME encoded-word syntax, which is of the following form:
+
+ ///
+  =?C?E?D?=
+ \\\
+
+Where C is the charset, which may be any character set registered with IANA,
+typically the same charset as the message body.
+
+E is the encoding, which can be "Q" for q-encoding, or "B" for base 64 encoding.
+
+D is the encoded data that is being sent.
+
+The entire encoded-word may not be more than 75 characters long. If the
+encoded-data cannot fit under this limit, multiple encoded-words (separated by
+CRLF SPACE) may be used.
+
+MIME types are used in HTML headers,
+ /// Ex:
+  Content-Type: text/html; charset=UTF-8
+  Content-Type: multipart/form-data; boundary=something
+ \\\
+
+-- Base 64 -------------------------------------------------------|
+Encoded ASCII cannot attached to emails and similar channels as some of the
+characters have special meaning (Ex: ), so instead of using 8 bit
+digits, Base 64 uses 6 bit words (64 digits) and maps these 64 digits to ASCII
+from A (0) to / (6). So now we can send ASCII over any channel.
+
+Some notable channels of Base 64 are websites and email attachments. In websites
+we can embed image files and other binary assets inside the otherwise text-based
+assets of HTML and CSS files. Regarding email, SMTP (originally) was designed to
+transport ASCII characters only, but by base 64 encoding, say, image files, we
+can attach them!
+
+A = 000000
+a = 011010
+1 = 110101
+Padding is "="
+
+-- Base 32 -------------------------------------------------------|
+Like Base 64, but with some differences;
+
+Pros:
+The character set is all one case which can help when using case-insensitive
+things like certain file systems or DNS names.
+
+The result can be used as a filename it cannot contain the / symbol, unlike Base
+64, and the alphabet can be selected to avoid similar-looking pairs of symbols
+(Ex: 8 and 0, O and 0, I and l)
+
+Cons:
+Encoding data in Base 32 takes up ~20% more space than Base 64, also padding
+often burdens small messages as encoding is done with 8 characters (5 bytes) at
+a time rather than Base 64's 4 character (3 byte) chunks.
+
+-- Bin-Hex -------------------------------------------------------|
+
+
+==[ *Compression* ]===============================================|
+>> *Introduction_3* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
+# Don't know where to put this atm BUT Larger dictionary size = better
+# compression rates, larger sizes allows for more repitition in each 'chunk'
+Compression is a type of encoding. Just like encryption, compression is math
+focused. We manipulate the probability distributions of symbols in data sets,
+and exploit those trends to produce smaller data sets that contain the same
+information. We reduce redundancy in data.
+
+Every single compression algorithm focuses on doing one of two things:
+ > Reduce the number of unique symbols in data
+ > Encode more frequent symbls with fewer bits
+
+:: Categories of Compression ::
+ Lossless (BWT, ANS, PAQ)
+ Lossy
+ De-duplication (LZ)
+ Entropy (Huffman, Arithmetic)
+ Reduced Precision (Truncation, Decimation)
+ Image/Video
+ Audio
+
+>> *Lossless_Compression* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
+Lossless compression ensures that there is no data lost from the original file.
+In compressing archives and text documents we can't have random bits of data
+gone, the original message would be lost! 
+
+-- Bit Packing ---------------------------------------------------|
+Lets talk a little bit about BITS.  Let's say we have an array of bools.
+Although we really only need one bit for a bool, because data is stored as BYTES
+in RAM, we'll have 7 whole bits not doing ANYTHING.
+///
+ 00000001 
+ 00000000 
+ 00000001 
+\\\
+We can get rid of those freeloading bits and instead represent our meaningful
+bits in a bit array
+/// 
+ 00000001 
+ 00000000  becomes  00000101 
+ 00000001 
+\\\
+Wooah we just saved two whole bytes! Now to read this back as boolean values
+we'll need to re-compose the full boolean value, something a la
+ 
+ bitArray[byteIndex] AND 11111111
+
+Doing this takes more operations. You save space at the cost of more
+instructions.
+
+ :: Densely Packed Decimal (DPD) ::
+  Alright but that's with bools. Now let's say we're wanting to represent some
+  decimal numbers in binary. Uhh 0001 0010 0011 and then some right. Man look at
+  those 0's in front. That's just wasted bits, that shit adds up! We can save
+  space by getting rid of those redundant 0's, introducing, Densely Packed
+  Decimal.
+  
+  DPD encodes each decimal digit into one of two ranges "small" digits 0-7,
+  0000-0111, and "large" digits 8-9, 1000-1001. DPD can store three decimal
+  digits in bits.
+
+  1111111111      999 # 999 in DPD
+  0011111111      999 # 999 in DPD, but better
+  100110011001    999 # 999 in BCD, regular 'ol Binary Coded Decimal
+  
+  # https://codegolf.stackexchange.com/questions/176371/densely-packed-decimal-dpd-to-decimal
+  # https://www.kinematicsoup.com/news/2016/9/6/data-compression-bit-packing-101
+
+-- Deduplication -------------------------------------------------|
+In data there's a lot of duplicate areas of data. Why in that last sentence we
+just said data twice, oh! I just said it again! At the moment we're using a
+whole 4 bytes at each instance. But we can store the "data" as a 1 byte
+something else, and map that something else to the full "data", and just
+REFERENCE the smaller something else and store that instead.
+
+ :: LZW Algorithm, Byte Pair Encoding ::
+  So, as a quick example, lets look at the following text
+  /// to be or not to be, that is the question \\\
+  we can reduce the amount of bytes used by replacing repeated sequences
+  /// ⊜ ⬗ or not ⊜ ⬗, ⟡at is ⟡e question \\\
+  the computer stores the table of replacements, and then replaces the original
+  when necessary.
+
+  ?? Where is the table embedded ??
+
+ :: Run Length Encoding (RLE) ::
+  /// 0001100000110000 \\\
+  can be represented instead as
+  /// 3,2,5,2,4 \\\
+
+ :: Huffman Encoding ::
+  Where "agcttttcattct" (small dna sequence) is represented in binary as
+  /// 00100111111111010011110111 \\\ # a=00, c=01, g=10, t=11
+  We can reduce the representation size of our most frequent symbols
+  /// 0100110011110001011001 \\\     # a=010, c=00, g=011, t=1
+  The huffman translation table is stored in the encoded file.
+
+  Huffman coding is used in compressing natural language documents and PNG
+  images.
+
+ :: 
+
+-- FLAC Compression, in Detail -----------------------------------|
+
+-- RAR Compression, in Detail ------------------------------------|
+
+-- lzma Compression, in Detail -----------------------------------|
+# is ultra64 a type of lzma compression?
+
+>> *Lossy_Compression* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
+We aren't always compressing archives or text documents. Audio files, pictures,
+and videos contain a LOT of data, a lot of data that we don't necessarily
+*need*.
+
+-- Chroma Sub sampling -------------------------------------------|
+The process of taking 2x2 blocks of pixels and setting their color to the
+average. JPEGs and MPEGs use a form of Chroma Subsampling.
+
+-- JPEG Compression, in Detail -----------------------------------|
+# https://www.csfieldguide.org.nz/en/chapters/coding-compression/image-compression-using-jpeg/
+
+-- MP3 Compression, in Detail ------------------------------------|
+
+==[ *Game_Repacking* ]============================================|
+>> *Introduction_4* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
+# Iterations:
+# 1. Simple 3 game repack
+# 2. Use custom selection of preprocessors and compression
+# 3. Use different selections on different file-types
+Pairing your data organization with the right compression algorithm can yield
+the best ratio. What are the best pairings?
+
+Theres many steps to making a repack:
+Precompression (Precomp) -> Deduplication (SREP) -> Compression (FreeArc)
+THEN you turn the .bin's into an installer that can do all of the above
+backwards.
+
+Making a repack comes in two steps, use something to COMPRESS your game data
+into a .bin (like DiskSpan), and then use something else to make an installer
+that will then DECOMPRESS that data (like ASIS). These are usually seperate
+tools, it is rare to find an installer that will also handle the compression
+part of things.
+
+>> *Preprocessors* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
+Precompressors, or preprocessors, re-arrange the data to be more predictable,
+and more pattern full. A compression algorithm is able to get better results
+when the data has been preproccessed.
+
+?? Will there need to be a post-processing as well? Or is it able to be
+decompressed into usable data. Assumption: Post-processing needed ??
+
+-- Precomp -------------------------------------------------------|
+# krinkels.org/threads/precomp.2029
+/// precomp -c- -t-j -intense -ofile.out file.in \\\
+
+-- XTool ---------------------------------------------------------|
+# krinkels.org/threads/xtool-2020.4187
+
+>> *Deduplicators* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
+-- SREP ----------------------------------------------------------|
+# krinkels.org/threads/superrep-srep.2031
+A deduplication included in FreeArc. Use after precompressing.
+
+>> *Compressors* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
+Your compression program is what actually does the compression. It can apply
+many different compression algorithms.
+
+-- DiskSpan GUI --------------------------------------------------|
+Implements lzma
+
+-- FreeArc -------------------------------------------------------|
+
+-- Lolz ----------------------------------------------------------|
+
+-- CMIX ----------------------------------------------------------|
+# Winner of 2021 compression:ratio. byronknoll.com/cmix.html
+
+>> *Installers* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
+# How to make my own custom installer? Some of what I want to do I already know
+# will NOT be supported. In linuxland it'd be easy in my head as a shell script,
+# but im not sure what would be involved to make a gui windows installer that
+# can decompress custom compression combinations, and use a shared pool of
+# common files for source games.
+-- Inno Setup ----------------------------------------------------|
+
+
+-- ASIS ----------------------------------------------------------|
+ :: Styles ::
+  vclstyles: Amakrits, Carbon
+  cjstyles: 7.cjstyles , TRInIUM.cjstyles
+
+-- WPI -----------------------------------------------------------|
+# What DODI uses
+
+==[ *Video_Codecs* ]================================================|
+
+==[ *Resources* ]===================================================|
+ :: Information Theory ::
+  # https://www.khanacademy.org/computing/computer-science/informationtheory
+  # That one paper on markov chains and predicting . - and a-z
+  # A Mathematical Theory of Communication
+
+ :: Encoding ::
+
+ :: Compression ::
+  # https://www.youtube.com/watch?v=Eb7rzMxHyOk&list=PLOU2XLYxmsIJGErt5rrCqaSGTMyyqNt2H
+  # A Method for the Construction of Minimum-Redundancy Codes, David Huffman
+

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>🐮 m00E10</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/styles.css"></head>
+<body><header><main class="shadow">
+<div class="top-bar shadow"><div class="navbar">
+<a href="../index.html">Home</a>
+<a class="active" href="../blog.html">Blog</a>
+<a href="../notes.html">Notes</a>
+<a href="../about.html">About</a></div></div></main></header>
+<main class="shadow">
+<div style="margin: 0 0 0 1vw;"><h3>$ cat Multipurpose_USB</h3></div>
+<hr/><article><h1>Making a Swiss Army USB</h1>
+<p>Live USBs and live utilities like Ultimate Boot CD, Clonezilla, and Kali    
+Linux can be very useful for troubleshooting and solving any number of computer 
+and network issues. I used to have an altoids tin full of various USBs that     
+provided live boots, installation media, and utilities that could be            
+used offline, but this quickly become unyieldly-</p>
+<div align=center>
+<img src="../assets/images/altoids.png">
+<h4>Which one was FreeBSD again?</h4>
+</div>
+<p>Considering how cheap USB storage is <a href="https://www.amazon.com/PNY-Turbo-128GB-Flash-Drive/dp/B00FE2N1WS">(128GB is just $15),</a>
+I thought why can't I make an all-in-one Swiss Army USB for live-boots, installers, and utilities?
+</p>
+<h2>Live-Multiboot Software</h2>
+<p>I found two different pieces of software that allow for Multibooting from USB,
+Ventoy and YUMI. YUMI has been around for longer but its development seems to of
+stagnated. I ended up choosing Ventoy for this project because its development
+is more active, it supports Secure boot, and it's also cross platform.
+
+<br><br>After downloading and unpacking the relase from github, installing ventoy is
+easy:<br><code>sudo bash Ventoy2Disk.sh -i -g -s -r 51200 /dev/sdX</code><br>This
+single command installs ventoy to our USB (-i) with a GPT layout (-g) with
+Secure boot support (-s) and 50GB of space reserved above ventoy for other uses
+(-r 51200) where our USB device is specified with /dev/sdX.
+
+<br><br>With just this one command we've installed Ventoy and can start adding
+liveboots by simply copying over ISOs and IMGs over to the "Ventoy" partition.
+I'll be adding the following ISOs:
+<ul>
+  <li><a href="https://artixlinux.org/download.php">Artix Linux</a></li>
+  <li><a href="https://www.opensuse.org/">Open Suse Tumbleweed</a></li>
+	<li><a href="https://getfedora.org/en/workstation/">Fedora Workstation</a></li>
+	<li><a href="https://www.debian.org/download">Debian</a></li>
+	<li><a href="https://www.kali.org/get-kali/">Kali Linux</a></li>
+  <li><a href="https://www.freebsd.org/where/">FreeBSD</a></li>
+	<li><a href="https://www.truenas.com/download-truenas-core/">TrueNAS Core</a></li>
+  <li><a href="https://www.proxmox.com/en/downloads/category/proxmox-virtual-environment">Proxmox</a></li>
+  <li><a href="https://opnsense.org/">OPNSense</a></li>
+  <li><a href="https://www.ultimatebootcd.com/ubcdlive.html">Ultimate Boot CD Live</a></li>
+  <li><a href="https://clonezilla.org/">Clonezilla</a></li>
+  <li><a href=="https://www.microsoft.com/en-us/software-download/windows10ISO">Windows 10</a></li>
+</ul></p>
+<h2>Making use of leftover space</h2>
+<p>So despite ALL of those ISOs I still have plenty of space. So with the 50GB I
+told Ventoy to keep intact I've added add:
+<ul>
+  <li>Encrypted OS Persistence for Kali Linux</li>
+  <li>exFat partition for general data</li>
+</ul></p>
+<p>So after carving out these partitions with cfdisk (any partition manager
+can work) I setup the persistent Kali partition with the following commands:</p>
+<pre>
+$ cryptsetup --verbose --type luks1 --cipher serpent-xts-plain64 \
+  --key-size 512 --hash whirlpool --iter-time 10000 --use-random \
+  --verify-passphrase luksFormat /dev/sdX3
+$ cryptsetup luksOpen /dev/sdX3 usb
+$ mkfs.ext4 -L persistence /dev/mapper/usb
+$ e2label /dev/mapper/usb persistence
+$ mkdir -p /mnt/usb
+$ mount /dev/mapper/usb /mnt/usb
+$ echo "/ union" > /mnt/usb/persistence.conf
+$ umount /dev/mapper/usb
+$ cryptsetup luksClose /dev/mapper/usb
+</pre>
+<p>Then to put on the final touch is to make all remaining space an exFat partition
+for general data which will be accessible from either Windows or Linux. One <code>mkfs.exfat /dev/sdX4</code>
+later and we're all done!</p>
+
+<h2>Closing Remarks</h2>
+<p>With not much effort at all you can make one USB to rule them all. This is a
+lot easier to manage, a lot easier to clone, and is something I can just add to
+my keychain instead of having a mess of drives in an altoids tin. Definitely an
+upgrade.</p>
+</article></main></body></html>

@@ -61,19 +61,18 @@ told Ventoy to keep intact I've added add:
 </ul></p>
 <p>So after carving out these partitions with cfdisk (any partition manager
 can work) I setup the persistent Kali partition with the following commands:</p>
-<pre>
-$ cryptsetup --verbose --type luks1 --cipher serpent-xts-plain64 \
+<pre><code>$ cryptsetup --verbose --type luks1 --cipher serpent-xts-plain64 \
   --key-size 512 --hash whirlpool --iter-time 10000 --use-random \
   --verify-passphrase luksFormat /dev/sdX3
-$ cryptsetup luksOpen /dev/sdX3 usb
-$ mkfs.ext4 -L persistence /dev/mapper/usb
-$ e2label /dev/mapper/usb persistence
-$ mkdir -p /mnt/usb
-$ mount /dev/mapper/usb /mnt/usb
-$ echo "/ union" > /mnt/usb/persistence.conf
-$ umount /dev/mapper/usb
-$ cryptsetup luksClose /dev/mapper/usb
-</pre>
+  $ cryptsetup luksOpen /dev/sdX3 usb
+  $ mkfs.ext4 -L persistence /dev/mapper/usb
+  $ e2label /dev/mapper/usb persistence
+  $ mkdir -p /mnt/usb
+  $ mount /dev/mapper/usb /mnt/usb
+  $ echo "/ union" > /mnt/usb/persistence.conf
+  $ umount /dev/mapper/usb
+  $ cryptsetup luksClose /dev/mapper/usb
+</code></pre>
 <p>Then to put on the final touch is to make all remaining space an exFat partition
 for general data which will be accessible from either Windows or Linux. One <code>mkfs.exfat /dev/sdX4</code>
 later and we're all done!</p>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>🐮 m00E10</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/styles.css"></head>
+<body><header><main class="shadow">
+<div class="top-bar shadow"><div class="navbar">
+<a href="../index.html">Home</a>
+<a class="active" href="../blog.html">Blog</a>
+<a href="../notes.html">Notes</a>
+<a href="../about.html">About</a></div></div></main></header>
+<main class="shadow">
+<div style="margin: 0 0 0 1vw;"><h3>$ cat OpenBSD_Setup</h3></div>
+<hr/><article><h1>Setting up OpenBSD for Daily Use</h1>
+<p>During my journey with Linux I've been venturing more and more torwards
+secure and minimal operating systems, my last install was Artix which I kept
+under 500 packages and secured with iptables and apparmor, but after using it
+for a good while it became time to try something new.
+
+OpenBSD is similar in a lot of ways to regular Linux, it does have the same
+ancestor after all, but it has its fair share of quirks. In this post I'll
+outline how I installed and configured OpenBSD as a Daily Driver on my laptop.</p>
+!! PICTURE OF LAPTOP + DESKTOP HERE !!
+<br><br><ul>
+  <li><a href="#Installation">Installation</a></li>
+  <li><a href="#Performance">Improving Performance</a></li>
+  <li><a href="#Packages">Package Installation</a></li>
+  <li><a href="#Current">Upgrade to -current</a></li>
+  <li><a href="#Users">Setup Users</a></li>
+  <li><a href="#Xterm">Configuring XTerm</a></li>
+  <li><a href="#i3">Configuring i3</a></li>
+  <li><a href="#lemonbar">Configuring lemonbar</a></li>
+  <li><a href="#Closing">Closing Remarks</a></li></ul>
+</p>
+<h2 id="Installation">Installing with Full Disk Encryption</h2>
+<p>Installation is breasy and driven through CLI prompts. After booting the
+installer send the following<pre>
+<code>i</code>           To start the installer
+<code>us</code>          To select us keyboard layout
+<code>bsd</code>         Setting hostname as "bsd"
+<code>&lt;RET&gt;</code>       Autoconfigure network interface(s)
+<code>&lt;RET&gt;</code> 
+<code>&lt;RET&gt;</code> 
+<code>&lt;RET&gt;</code> 
+<code>Enter root password here</code>
+<code>no</code>          I do not want sshd started by default as this is a workstation
+<code>yes</code>         I do want xenodm to start X as it is more secure than startx
+<code>&lt;RET&gt;</code>       Accept defaults for COM0
+<code>no</code>          We will setup users after installation
+<code>&lt;RET&gt;</code>       Accept defaults for timezone
+<code>&lt;RET&gt;</code>       Accept defaults for disk
+<code>!</code>           Here we interrupt disk partitioning to setup softraid
+              so we can have full disk encryption. After this interruption
+              we will be dropped into a shell where we'll send the
+              following commands
+
+<code>fdisk -iy wd0</code>
+<code>disklabel -E wd0</code>
+<code> wd0> a</code>
+<code> partition: [a]</code> Just hit enter to accept default proposal
+<code> offset: [64]</code>   Just hit enter to accept default proposal
+<code> size: [xxx]</code>    Just hit enter to accept default proposal
+<code> FS type: [4.2BSD] RAID</code>
+<code> wd0> w</code>         Then write,
+<code> wd0> q</code>         and quit
+<code>bioctl -c C -l /dev/wd0a softraid0</code>
+<code>exit</code>            Then exit back into the regular installer
+<code>Ctrl+C</code>          Stop the installer
+<code>install</code>         and reset it with our new softraided partition layout
+<code>...</code>             At this point you will have to resubmit the same
+                  responses as before until you reach the disk selection
+                  prompt again.
+
+<code>sd0</code>        Be sure to select our softraided disk and NOT wd0
+<code>&lt;RET&gt;</code>      Accept default, Whole MBR for disk
+<code>&lt;RET&gt;</code>      Accept default, auto layout for disk
+<code>&lt;RET&gt;</code>      We are done with disk initialization
+<code>cd0</code>        We'll use the sets on our installation medium
+<code>&lt;RET&gt;</code>      Accept default, all sets to be installed
+<code>&lt;RET&gt;</code>
+<code>yes</code>        The CD does not contain a sig file, see openbsd.org/faq/faq4.html
+<code>&lt;RET&gt;</code> 
+<code>&lt;RET&gt;</code>      Installation complete!
+</pre>
+
+<h2 id="Performance">Improving Performance and Battery Life</h2>
+<div><p><pre>
+<code>rcctl enable apmd</code>                     Enable <a href="https://man.openbsd.org/apmd.8">apm</a> to save battery
+<code>rcctl set apmd status on</code>             
+<code>rcctl set apmd flags -L</code>               -L is for low performance, -H is high
+
+<code>echo "set timeout 1" > /etc/boot.conf</code> This alone reduces boot-time
+                                        by 4 seconds</pre><p>
+Another good thing is to enable Soft Updates on your disk which will allow for
+asynchronous writes, in your /etc/fstab change your .a line to the following
+<pre><code>$ID.a / ffs rw,softdep 1 1</code></pre>
+
+</pre></p></div>
+
+<h2>Configuration</h2>
+<p>Now that the installation is out of the way, we're left with a very.. basic
+desktop. No office suite, no web browser, not even vim. From here out what I
+deem as 'the essentials' are opinionated, but I'll list justification for
+application choices and I hope overall it can provide a good map to get an
+OpenBSD system of your own tuned to your needs. So let's hop over to a root
+TTY with Ctrl+Alt+F1 and grab the essentials.</p>
+
+<h3 id="Packages">Packages</h3>
+<p><pre>
+<code>pkg_add -uvi</code>   Updates all current packages
+<code>pkg_add bash coreutils wget vim nano htop tmuxinator wireguard-tools  \
+               i3 lemonbar zathura zathura-pdf-mupdf firefox maim xclip \
+               xdotool openbsd-backgrounds git</code></pre>
+<ul>
+<li>i3 chosen as windowmanager because its light, easy to configure, and is <a href="https://man.openbsd.org/pledge.2">pledged</a>
+<li>lemonbar because its driven through bash script configuration and has
+  minimal dependencies</li>
+<li>zathura as pdf viewing because it can remember where you left off (unlike
+    mupdf), and supports color inversion+filters for night-time reading</li>
+<li>firefox as browser because its very tweakable and can be made private and
+  secure with a bit of tuning (and chrome/chromium browsers phone home to google)</li>
+<li>maim for taking screenshots because of its minimal dependencies</li>
+</ul>
+
+<h3 id="Current">Following -current</h3>
+<p>
+I like to follow the <a href="https://www.openbsd.org/faq/current.html">-current
+branch</a> because it ensures I get the latest updates to software, and
+generally, whenever available I prefer running rolling-release distros.
+Folloiwing -current is easy:
+<br><br><code>sysupgrade -s</code><br><br>
+This will update and reboot your system. After rebooting it will now be on the
+current branch. Easy!
+</p>
+
+<h3 id="Users">User Setup</h3>
+<p>
+So at this point we only have our root user. We'll set up a standard and admin
+user and then give give the admin user elevated permissions in /etc/doas.conf.
+To make new users just <code>adduser</code> and follow the prompts. Once the two
+users are made<pre>
+<code>echo "permit persist admin" >> /etc/doas.conf</code>
+<code>echo "permit nopass user cmd shutdown args -p now</code>
+</pre></p>
+Once the users are made, log out and log back in as your standard user.
+
+<h3 id="Xterm">XTerm Configuration</h3>
+<p>
+In ~/.Xdefaults I have the following entries<pre><code>XTerm*loginShell:false
+  XTerm*Background:Black
+  XTerm*Foreground:Grey
+  XTerm*selectToClipboard:true
+  XTerm*scrollBar:false
+  XTerm*saveLines:25000
+
+  ! Give standard copy/paste keybinds and functionality
+  XTerm*vt100.translations: #override \
+      Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
+      Shift Ctrl <Key> V: insert-selection(CLIPBOARD)
+
+  ! Make delete key delete forwards instead of backwards
+  XTerm*deleteIsDEL:false
+
+  ! 16 color palette based on DOS
+  ! Black
+  XTerm*color0:#000000
+  ! Red
+  XTerm*color1:#a80000
+  ! Green
+  XTerm*color2:#00a800
+  ! Yellow
+  XTerm*color3:#a85400
+  ! Blue
+  XTerm*color4:#0000a8
+  ! Magenta
+  XTerm*color5:#a800a8
+  ! Cyan
+  XTerm*color6:#00a8a8
+  ! White
+  XTerm*color7:#a8a8a8
+  ! Bright Black
+  XTerm*color8:#545454
+  ! Bright Red
+  XTerm*color9:#fb0909
+  ! Bright Green
+  XTerm*color10:#54fc54
+  ! Bright Yellow
+  XTerm*color11:#ffa800
+  ! Bright Blue
+  XTerm*color12:#5454fc
+  ! Bright Magenta
+  XTerm*color13:#fc54fc
+  ! Bright Cyan
+  XTerm*color14:#54fcfc
+  ! Bright White
+  XTerm*color15:#fcfcfc
+</pre></code></p>
+
+<h3 id="i3">i3 Configuration</h3>
+<p>First we want to make sure i3 starts after login, to do that make your
+~/.xsession contain the following<pre><code>xidle -timeout 300 &
+  exec i3
+</code></pre><p>Then copy over the premade config<pre><code>mkdir -p ~/.config/i3
+  cp /usr/local/share/examples/i3/config ~/.config/i3/config</code></pre><p>
+Everything in the i3 config is kept default but the following new lines, and the
+edited status_command line<pre><code># Make computer never go to sleep
+  exec xset s 0 dpms 0 0 0
+
+  # Set volume to 100% (by default its an infuriating 49%)
+  exec --no-startup-id sndioctl output.level=1
+
+  # Set wallpaper
+  exec --no-startup-id "xwallpaper --stretch ~/path/to/background.png"
+
+  # Remove borders and titles from windows
+  for_window [class="^.*^"] border pixel 0
+  
+  # lemonbar status command for 1024x768 display
+  status_command ~/bin/status.sh | /usr/local/bin/lemonbar -g 920x15+100+1 -b -d
+</code></pre>
+
+<h3 id="lemonbar">lemonbar Configuration</h3>
+<p>
+So my i3 configuration I pipe status.sh to lemonbar, this status.sh is the
+following<pre><code>#!/bin/ksh
+  Clock(){
+    echo $(date +"%a %b %d %H:%H%p")
+  }
+  ActiveWindow(){
+    # Window title with padding so other elements don't move when title length changes
+    window=$(xdotool getwindowfocus getwindowname)
+    echo "$window                                                 " | cut -c1-20
+  }
+  Battery(){
+    echo $(apm | grep % | cut -d " " -f 4)
+  }
+  Sound(){
+    printf $(sndioctl | grep output.level | cut -c 14- )
+  }
+
+  while true; do
+    echo "$(ActiveWindow) %{F#5454fc}$(Sound)  %{F#fb0909}$(Battery)  %{F-}$(Clock)"
+		sleep 2
+  done
+</code></pre><p>
+So every 2 seconds the titlebar refreshes. The %{F..} codes in the last echo
+change the color of the item on the bar, the %{F-} reverts the colors back to
+default.</p>
+
+<h2 id="Closing">Closing Remarks</h2>
+<p>I've been using OpenBSD for a couple of weeks now on my laptop and I like it
+a lot. I like its minimalistic out-of-your-way nature and that it allows me to
+focus. I like how well documented it is, and I like the cozy community
+surrounding it. Although OpenBSD has its fair share of quirks, it's able to do
+everything I expect out of a UNIX Operating System and it will continue to be
+the OS of choice for my laptop.</p>
+</article></main></body></html>

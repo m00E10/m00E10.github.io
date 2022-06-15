@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>🐮 m00E10</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/styles.css"></head>
+<body><header><main class="shadow">
+<div class="top-bar shadow"><div class="navbar">
+<a href="../index.html">Home</a>
+<a class="active" href="../blog.html">Blog</a>
+<a href="../notes.html">Notes</a>
+<a href="../about.html">About</a></div></div></main></header>
+<main class="shadow">
+<div style="margin: 0 0 0 1vw;"><h3>$ cat rtmp_radio</h3></div>
+<hr/><article><h1>Making a simple RTMP radio station</h1>
+<p>
+I really like listening to music while I study, but sometimes deciding what to
+listen to can turn turn into its own procrastination session of listening to
+different albums, so stations like 24/7 lofi are nice to just tune into. There's
+a problem with that though, I don't <i>like</i> lofi. I like listening to 
+Atmospheric Jungle and Ambient Drum & Bass while I study. So I ended up making
+my own radio station with Nginx, OBS, and Mullvad on a Debian host.
+</p>
+<h2>Setting up Mullvad</h2>
+<p>
+Because I only have a residential network and don't want to have a recurring
+charge for a VPS that only does one thing, I'll be making use of Mullvads
+port-forward feature for VPN sessions. Setup of this is quite simple, pull the
+latest binary from <a href="https://mullvad.net/download/app/deb/latest">Mullvads site</a>
+and install it with<code>sudo apt install ./MullvadVPN*</code> after starting the
+app and getting connected via wireguard, take note of your Device Name and
+navigate to <a href="https://mullvad.net/en/account/#/ports"</a>Manage Devices and Ports</a>.
+Here select your devices exit location and Device Name associated WireGuard key
+and "Add Port", this will open a random internet accessible port that we'll face
+our RTMP stream to. We'll refer to this port as $mlvd_port
+</p>
+
+<h2>Setting up Nginx</h2>
+<p>
+RTMP support isn't supported in Nginx by default, so we'll need to compile it
+manually with the feature added. Run<code>sudo apt install build-essential libpcre3-dev libssl-dev libpcre3</code>
+then <a href="http://nginx.org/en/download.html">download the latest Nginx build</a> and also the <a href="https://github.com/sergey-dryabzhinsky/nginx-rtmp-module/releases">latest RTMP module</a>.
+Once downloaded,<pre>
+<code>sudo apt install build-essential libpcre3 libpcre3-dev libssl-dev \</code>
+<code>                 zlib1g-dev</code>
+<code>tar xzvf nginx-rtmp*gz && rm nginx-rtmp*gz</code>
+<code>mkdir nginx && tar xzvf nginx*gz -C nginx && rm nginx*gz</code>
+<code>cd nginx/*</code>
+<code>./configure --with-http_ssl_module --add-module=../../nginx-rtmp*</code>
+<code>make && sudo make install</code></pre>
+<p>
+Now nginx is installed, but before we start it make sure your /usr/local/nginx/conf/nginx.conf
+contains the following at the end of the file.<pre>
+<code>rtmp {</code>
+<code>  server {</code>
+<code>    listen $mlvd_port;</code>
+<code>    chunk_size 4096</code>
+<code>    application live {</code>
+<code>      live on;</code>
+<code>      record off;</code>
+<code>    }</code>
+<code>  }</code>
+<code>}</code></pre>
+<p>
+Then start it with<code>sudo /usr/local/nginx/sbin/nginx</code>
+</p>
+
+<h2>Setting up OBS</h2>
+<p>Simply install OBS with<code>sudo apt install obs-studio</code>, launch it,
+and during the quickstart select "Custom" as the service you're streaming to,
+with Server as "rtmp://127.0.0.1:$mlvd_port/live" and Stream Key as "music", set
+up your scene and start streaming!
+</p>
+
+<h2>Listening</h2>
+<p>
+Now that we're all set up it's time to tune in, to find the public ip that we're
+broadcasting to use<code>curl https://am.i.mullvad.net/connected</code>, and
+then tune in with<code>mpv $ip:$mlvd_port/live/music</code>, any other rtmp
+client will work just as well (such as VLC).
+</p>
+</article></main></body></html>
